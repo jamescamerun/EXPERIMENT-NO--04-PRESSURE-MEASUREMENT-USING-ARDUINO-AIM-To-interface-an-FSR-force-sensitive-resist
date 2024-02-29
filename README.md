@@ -60,6 +60,13 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 
 ### FIGURE-03 CIRCUIT DIAGRAM
 
+![Screenshot 2024-02-29 172407](https://github.com/AlluguriSrikrishnateja/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/118343892/f619b483-add2-4e60-9b00-0b6d9eaf42cc)
+
+### SCHEMATIC REPRESENTATION
+
+<img width="482" alt="image" src="https://github.com/AlluguriSrikrishnateja/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/118343892/a2d6a932-c5f5-4758-a238-156409f49c8d">
+
+
 
 
 ### PROCEDURE:
@@ -76,29 +83,73 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 
 
 ### PROGRAM 
- *your roll no 
- * your name 
- * department and year 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
 
-![image](https://user-images.githubusercontent.com/36288975/188804653-a3154e8e-2655-46f2-9dcd-f425dd1ba109.png)
+ ROLL NO : 212222040006
+ 
+ 
+ NAME : ALLUGURI SRIKRISHNA TEJA
+ 
+ 
+ DEPT : COMPUTER SCIENCE AND ENGINEERING
 
 
-### TABLE -02 standard deviation table 
+```
+int fsr;
+int LED=7;
+void setup()
+{
+ pinMode(LED, OUTPUT);
+ Serial.begin(9600);
+}
+
+void loop()
+{
+ fsr=analogRead(A0);
+ Serial.print("raw value=");
+ Serial.println(fsr);
+ delay(1000);
+ int m;
+ m=map(fsr,0,159,0,10);
+ Serial.print("mapped value=");
+ Serial.println(m);
+ delay(1000);
+ 
+ if(m>5)
+ {
+   digitalWrite(LED,HIGH);
+   delay(500);
+   digitalWrite(LED,LOW);
+   delay(500);
+ }
+   
+}
+
+``` 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ ### TABLE
+
+<img width="480" alt="image" src="https://github.com/AlluguriSrikrishnateja/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/118343892/654111b9-286a-4719-b10c-747104f0d017">
+
+
+### GRAPH
+
+<img width="571" alt="image" src="https://github.com/AlluguriSrikrishnateja/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/118343892/3d805884-e41e-4f7a-970c-a805b94743fb">
+
+
+
+
 ### Population Standard Deviation
 The population standard deviation, the standard definition of σ, is used when an entire population can be measured, and is the square root of the variance of a given data set. In cases where every member of a population can be sampled, the following equation can be used to find the standard deviation of the entire population:
 
@@ -111,9 +162,13 @@ N is the total number of values
 
 For those unfamiliar with summation notation, the equation above may seem daunting, but when addressed through its individual components, this summation is not particularly complicated. The i=1 in the summation indicates the starting index, i.e. for the data set 1, 3, 4, 7, 8, i=1 would be 1, i=2 would be 3, and so on. Hence the summation notation simply means to perform the operation of (xi - μ)2 on each value through N, which in this case is 5 since there are 5 values in this data set.
 
-EX:           μ = (1+3+4+7+8) / 5 = 4.6        
-σ = √[(1 - 4.6)2 + (3 - 4.6)2 + ... + (8 - 4.6)2)]/5
-σ = √(12.96 + 2.56 + 0.36 + 5.76 + 11.56)/5 = 2.577
+
+
+EX: μ = (2+2+4+5+5+6+7+7+8+8) / 10 = 5.4
+
+
+
+σ = √[(2-5.4)2 + (2-5.4)2 + (4-5.4)2 + (5-5.4)2 + (5-5.4)2+ (5-5.4)2+ (6-5.4)2+ (6-5.4)2+ + (7-5.4)2+ (7-5.4)2+ (8-5.4)2+ (8-5.4)2 + (8-5.4)2]/10 σ = √(6.66)/10 = 0.66
 
 
 
@@ -129,4 +184,6 @@ EX:           μ = (1+3+4+7+8) / 5 = 4.6
 
 
 
-### RESULTS : Arduino uno is interfaced with FSR and output values are indicated on a graph.
+### RESULTS : 
+
+Arduino uno is interfaced with FSR and output values are indicated on a graph.
