@@ -1,9 +1,9 @@
 # EXPERIMENT-NO--03-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resistor
 
-# DATE :
-# NAME :
-# ROLLNUMBER :
-# DEPARTMENT
+# DATE :3/3/2024
+# NAME :m.mohammed amjath
+# ROLLNUMBER :212221083009
+# DEPARTMENT:mechanical engineering
 ## AIM: 
 To interface an FSR(force sensitive resistor) and scale the output voltage obtained to pressure applied 
  
@@ -31,7 +31,7 @@ FSRs are basically a resistor that changes its resistive value (in ohms Ω) depe
 
 
 
-### FIGURE 02 FORCE SENSITIVE RESITOR FOIL DISC TYPE  
+###  FORCE SENSITIVE RESITOR FOIL DISC TYPE  
 
 FSRs are often a polymer with conductive material silk-screened on. That means they're plastic and the connection tab is crimped on somewhat delicate material. The best way to connect to these is to simply plug them into a breadboard.
 
@@ -45,24 +45,15 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 
 ### Vo = Vcc ( R / (R + FSR) )								Eq-01
 
-****Where R= 1KΩ in this experiment 
-****That is, the voltage is proportional to the inverse of the FSR resistance.
+Where R= 1KΩ in this experiment 
+That is, the voltage is proportional to the inverse of the FSR resistance
 
+###  CIRCUIT: 
+![Screenshot 2024-03-01 105939](https://github.com/RAGULRAAJAN/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/147473144/5201aeae-f240-451d-b0ed-63e1609a5968)
 
+### SCHEMATIC DIAGRAM:
 
-
-
-
-
-
-
-
-![image](https://user-images.githubusercontent.com/36288975/163532979-a2a5cb5c-f495-442c-843e-bebb82737a35.png)
-
-
-
-### FIGURE-03 CIRCUIT DIAGRAM
-
+![Screenshot 2024-03-01 105639](https://github.com/RAGULRAAJAN/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/147473144/52e3029e-0a43-4974-bc48-9f0104666326)
 
 
 ### PROCEDURE:
@@ -79,29 +70,47 @@ The easiest way to measure a resistive sensor is to connect one end to power and
 
 
 ### PROGRAM 
- *your roll no 
- * your name 
- * department and year 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-
-![image](https://user-images.githubusercontent.com/36288975/188804653-a3154e8e-2655-46f2-9dcd-f425dd1ba109.png)
+```
+int LED=7;
+int FSR;
 
 
-### TABLE -02 standard deviation table 
+void setup()
+{
+  pinMode(LED, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop()
+{
+  FSR=analogRead(A0);
+  Serial.print("Raw Value=");
+  Serial.println(FSR);
+  delay(500);
+  int m;
+  m=map(FSR,0,159,0,10);
+  Serial.print("mapped value=");
+  Serial.println(m);
+  if(FSR>50)
+  {
+   digitalWrite(LED,LOW);
+   delay(500);
+   digitalWrite(LED,HIGH);
+   delay(500);
+    
+  }
+   
+}
+```
+
+ 
+ 
+ ![Screenshot 2024-03-01 105845](https://github.com/RAGULRAAJAN/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/147473144/b5f6ce3c-b177-486b-8e1d-139a51b0f608)
+
+ 
+### standard deviation diagram :
+![Screenshot 2024-03-01 112011](https://github.com/RAGULRAAJAN/EXPERIMENT-NO--04-PRESSURE-MEASUREMENT-USING-ARDUINO-AIM-To-interface-an-FSR-force-sensitive-resist/assets/147473144/486a93b6-04ee-42ce-a954-7429f2e8d9fd)
+
 ### Population Standard Deviation
 The population standard deviation, the standard definition of σ, is used when an entire population can be measured, and is the square root of the variance of a given data set. In cases where every member of a population can be sampled, the following equation can be used to find the standard deviation of the entire population:
 
